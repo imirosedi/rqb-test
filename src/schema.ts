@@ -15,7 +15,7 @@ export const orderLines = pgTable("order_line", {
     orderId: uuid("order_id")
 		.notNull()
 		.references(() => orders.id),
-	quantity: decimal("quantity").notNull()
+	quantity: decimal("quantity", { mode: "string" }).notNull(),
 });
 
 export const orderLinesRel = relations(orderLines, ({ one }) => ({
